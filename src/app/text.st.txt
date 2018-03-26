@@ -1,0 +1,10 @@
+getAllCompanys(){
+   
+   	this.companyService.getAllCompanys()
+   	
+   		.subscribe(
+ 			data => this.allCompanys = data,
+        	errorCode =>  this.statusCode = errorCode); 
+   
+   }
+
