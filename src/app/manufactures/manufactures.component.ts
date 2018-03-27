@@ -46,9 +46,11 @@ export class ManufacturesComponent {
   }
   
   ngOnInit() {
-  
-  	this.getAllCompanys();
-  	this.selectedObj = this.allCompanys[0].companyId;
+  	
+  	setTimeout(()=>{
+  		this.getAllCompanys();
+  		this.selectedObj = this.allCompanys[0].companyId;
+  	},1000)
   
   }
 
