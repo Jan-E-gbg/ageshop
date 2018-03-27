@@ -30,8 +30,9 @@ export class ManufacturesComponent {
 	
    
    selectChanged(event) {
-   		this.companyId = event.target.value;
-   		this.onChangeManufactur.emit(this.companyId);
+   
+   		let index: number = event.target['selectedIndex'];
+   		this.onChangeManufactur.emit(this.this.allCompanys[index].companyId);
    }
    
 	@Output() onChangeManufactur = new EventEmitter<number>();
