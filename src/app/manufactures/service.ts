@@ -5,11 +5,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { Company } from './company';
+import { CollectionOfModel } from './collectionOfModel';
 
 @Injectable()
 export class CompanyService {
 
 	listAllCompanyUrl = "listAllCompanys";
+	getProductModelUrl = 'http://localhost:8080/CrunchifySpringMVCTutorial/restmain/modelItem';
 	
 	constructor(private http:Http) { 
     }
@@ -19,6 +21,19 @@ export class CompanyService {
 	       .map(this.extractData)
 	       .catch(this.handleError);
 
+    }
+    
+    getProductModelById(productId: string): Observable<CollectionOfModel> {
+    
+    	let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+   		let cpParams = new URLSearchParams();
+   		cpParams.set('productId', productId);			
+   		let options = new RequestOptions({ headers: cpHeaders, params: cpParams });
+   		
+   		return this.http.get(this.getProductModelUrl, options)
+	   .map(this.extractData)
+	   .catch(this.handleError);
+    
     }
     
     private extractData(res: Response) {
